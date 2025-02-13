@@ -14,10 +14,21 @@ public class Cliente {
     }
 
     public void adicionar(Item item) {
-        if (item != null) {
+        Item itemExistente = buscarItem(item.getNome());
+        if (itemExistente != null) {
+            itemExistente.setQuantidade(itemExistente.quantidade + 1);
+        } else {
             pedidos.add(item);
-            System.out.println("Pedido realizado com sucesso!");
         }
+    }
+
+    public Item buscarItem(String nome) {
+        for (Item item : pedidos) {
+            if (item.getNome().equalsIgnoreCase(nome)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public void cancelarPedido(Item item) {
@@ -31,7 +42,19 @@ public class Cliente {
     public void listaDePedidos() {
         System.out.println("Lista de pedidos:");
         for (Item item : pedidos) {
-            System.out.println(item.getNome());
+            double total = item.calcularTotal();
+
+            System.out.println(" - " + item.getNome() + " (" + item.getQuantidade() + ") - R$ " + total);
+
         }
+    }
+
+    public double somarPedido() {
+        double total = 0;
+        for (Item item : pedidos) {
+            total += item.getPreco();
+        }
+        return total;
+
     }
 }

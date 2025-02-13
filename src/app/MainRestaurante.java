@@ -23,7 +23,13 @@ public class MainRestaurante {
 
         cliente1.adicionar(cardapio.buscarItem("Coca-cola"));
         cliente1.adicionar(cardapio.buscarItem("Coca-cola"));
+        cliente1.adicionar(cardapio.buscarItem("Hamburguer"));
+        cliente1.adicionar(cardapio.buscarItem("Batata-frita"));
 
         cliente1.listaDePedidos();
+        cliente1.cancelarPedido(item3);
+        cliente1.listaDePedidos();
+
+        System.out.println("Total: R$ " + cliente1.somarPedido());
     }
 }

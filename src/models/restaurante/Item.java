@@ -19,4 +19,16 @@ public class Item {
         return nome;
     }
 
+    public double calcularTotal() {
+        return preco *= quantidade;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
 }
